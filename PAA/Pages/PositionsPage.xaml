@@ -1,0 +1,60 @@
+﻿<Page x:Class="PAA.Pages.PositionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:PAA.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1480"
+      Title="PositionsPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGridPositions" Grid.Row="1" Grid.Column="1" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" HeadersVisibility="Column" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+                <DataGridTextColumn Header="Salary, $" Width="*">
+                    <DataGridTextColumn.Binding>
+                        <Binding Path="Salary" StringFormat="0.00" />
+                    </DataGridTextColumn.Binding>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock x:Name="textBlockPositionOperation" Text="Position operation:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="133" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+        <ComboBox x:Name="comboBoxPositionOperationType" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="386" FontSize="16" SelectedIndex="0" SelectionChanged="comboBoxPositionOperationType_SelectionChanged">
+            <ComboBoxItem>Addition a position</ComboBoxItem>
+            <ComboBoxItem>Editing the position</ComboBoxItem>
+            <ComboBoxItem>Deleting the position</ComboBoxItem>
+        </ComboBox>
+
+        <TextBlock x:Name="textBlockPosition" Text="Position:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,79,0,0"/>
+        <Frame x:Name="framePosition" Grid.Row="1" Grid.Column="2" Background="White" NavigationUIVisibility="Hidden" Margin="10,108,5,478"/>
+        <TextBlock x:Name="textBlockPositionName" Text="Position name:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="104" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,140,0,0"/>
+        <TextBox x:Name="textBoxPositionName" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,169,0,0"/>
+        <TextBlock x:Name="textBlockSalary" Text="Salary:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="104" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,202,0,0"/>
+        <TextBox x:Name="textBoxSalary" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,231,0,0"/>
+
+        <Button x:Name="buttonPerformOperationOnPosition" Grid.Row="1" Grid.Column="2" Height="60" Width="340" FontSize="16" Background="#FF000B0D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,294,0,0" Click="buttonPerformOperationOnPosition_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="CallToAction" Width="25" Height="25" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="Perform an operation on the position" FontSize="16" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Page>

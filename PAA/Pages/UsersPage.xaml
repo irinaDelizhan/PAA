@@ -1,0 +1,99 @@
+﻿<Page x:Class="PAA.Pages.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:PAA.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1480"
+      Title="UsersPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGridUsers" Grid.Row="1" Grid.Column="1" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" HeadersVisibility="Column" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="Auto" />
+                <DataGridTextColumn Header="Surname" Binding="{Binding Surname}" Width="Auto" />
+                <DataGridTextColumn Header="Patronymic" Binding="{Binding Patronymic}" Width="Auto" />
+                <DataGridTextColumn Header="Login" Binding="{Binding Login}" Width="Auto" />
+                <DataGridTextColumn Header="Password" Binding="{Binding EncryptedPassword}" Width="Auto" />
+                <DataGridTextColumn Header="Phone" Binding="{Binding Phone}" Width="Auto" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="Auto" />
+                <DataGridTextColumn Header="Role" Binding="{Binding Role}" Width="Auto" />
+                <DataGridTextColumn Header="Section" Binding="{Binding SectionData}" Width="Auto" />
+                <DataGridTextColumn Header="Position" Binding="{Binding PositionData}" Width="Auto" />
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="Auto" />
+                <DataGridTextColumn Header="Start date" Binding="{Binding StartDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="Auto" />
+                <DataGridTextColumn Header="End date" Binding="{Binding EndDate, StringFormat=\{0:dd.MM.yyyy\}}" Width="Auto" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock x:Name="textBlockUserOperation" Text="User operation:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="115" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+        <ComboBox x:Name="comboBoxUserOperationType" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="386" FontSize="16" SelectedIndex="0" SelectionChanged="comboBoxUserOperationType_SelectionChanged">
+            <ComboBoxItem>Addition a user</ComboBoxItem>
+            <ComboBoxItem>Editing the user</ComboBoxItem>
+            <ComboBoxItem>Deleting the user</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="textBlockLogin" Text="Login:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,76,0,0"/>
+        <TextBox x:Name="textBoxLogin" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,105,0,0"/>
+        <TextBlock x:Name="textBlockPassword" Text="Password:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,138,0,0"/>
+        <PasswordBox x:Name="textBoxPassword" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,167,0,0"/>
+        <TextBlock x:Name="textBlockPhone" Text="Phone:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,200,0,0"/>
+        <TextBox x:Name="textBoxPhone" Grid.Row="1" Grid.Column="2" FontSize="16" Width="309" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="86,229,0,0" PreviewTextInput="textBoxPhone_PreviewTextInput"/>
+        <ComboBox x:Name="comboBoxPhoneType" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Margin="10,229,0,0" VerticalAlignment="Top" Width="71" FontSize="16" SelectedIndex="0" SelectionChanged="comboBoxPhoneType_SelectionChanged">
+            <ComboBoxItem>+380</ComboBoxItem>
+            <ComboBoxItem>+1</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="textBlockAddress" Text="Address:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,266,0,0"/>
+        <TextBox x:Name="textBoxAddress" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,295,0,0"/>
+        <TextBlock x:Name="textBlockRole" Text="Role:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,328,0,0"/>
+        <ComboBox x:Name="comboBoxRoleType" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,357,0,0" VerticalAlignment="Top" Width="386" FontSize="16" SelectedIndex="0">
+            <ComboBoxItem>The head of projects</ComboBoxItem>
+            <ComboBoxItem>Employee</ComboBoxItem>
+            <ComboBoxItem>Administrator</ComboBoxItem>
+            <ComboBoxItem>The head of the company</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="textBlockSection" Text="Section:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,394,0,0"/>
+        <Frame x:Name="frameSection" Grid.Row="1" Grid.Column="2" Background="White" NavigationUIVisibility="Hidden" Margin="10,423,5,163"/>
+        <TextBlock x:Name="textBlockPosition" Text="Position:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,458,0,0"/>
+        <Frame x:Name="framePosition" Grid.Row="1" Grid.Column="2" Background="White" NavigationUIVisibility="Hidden" Margin="10,489,5,97"/>
+
+        <TextBlock x:Name="textBlockUser" Text="User:" Grid.Row="1" Grid.Column="3" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+        <Frame x:Name="frameUser" Grid.Row="1" Grid.Column="3" Background="White" NavigationUIVisibility="Hidden" Margin="10,39,5,547"/>
+        <TextBlock x:Name="textBlockName" Text="Name:" Grid.Row="1" Grid.Column="3" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,76,0,0"/>
+        <TextBox x:Name="textBoxName" Grid.Row="1" Grid.Column="3" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,105,0,0"/>
+        <TextBlock x:Name="textBlockSurname" Text="Surname:" Grid.Row="1" Grid.Column="3" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,138,0,0"/>
+        <TextBox x:Name="textBoxSurname" Grid.Row="1" Grid.Column="3" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,167,0,0"/>
+        <TextBlock x:Name="textBlockPatronymic" Text="Patronymic:" Grid.Row="1" Grid.Column="3" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="11,200,0,0"/>
+        <TextBox x:Name="textBoxPatronymic" Grid.Row="1" Grid.Column="3" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,229,0,0"/>
+        <TextBlock x:Name="textBlockUserStatus" Text="User status:" Grid.Row="1" Grid.Column="3" FontSize="16" Height="29" Width="87" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,266,0,0"/>
+        <ComboBox x:Name="comboBoxUserStatusType" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" Margin="0,295,0,0" VerticalAlignment="Top" Width="386" FontSize="16" SelectedIndex="0">
+            <ComboBoxItem>Active</ComboBoxItem>
+            <ComboBoxItem>Passive</ComboBoxItem>
+            <ComboBoxItem>Blocked</ComboBoxItem>
+        </ComboBox>
+        <Frame x:Name="frameDate" Grid.Row="1" Grid.Column="3" Background="White" Width="390" NavigationUIVisibility="Hidden" Margin="11,328,5,264"/>
+
+        <Button x:Name="buttonPerformOperationOnUser" Grid.Row="1" Grid.Column="2" Height="60" Width="340" FontSize="16" Background="#FF000B0D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,552,0,0" Click="buttonPerformOperationOnUser_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="CallToAction" Width="25" Height="25" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="Perform an operation on the user" FontSize="16" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Page>

@@ -1,0 +1,52 @@
+﻿<Page x:Class="PAA.Pages.SectionsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:PAA.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1480"
+      Title="SectionsPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition />
+            <ColumnDefinition/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid x:Name="dataGridSections" Grid.Row="1" Grid.Column="1" FontSize="16" IsReadOnly="True" AutoGenerateColumns="False" ColumnWidth="*" HeadersVisibility="Column" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock x:Name="textBlockSectionOperation" Text="Section operation:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="133" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0"/>
+        <ComboBox x:Name="comboBoxSectionOperationType" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Margin="0,39,0,0" VerticalAlignment="Top" Width="386" FontSize="16" SelectedIndex="0" SelectionChanged="comboBoxSectionOperationType_SelectionChanged">
+            <ComboBoxItem>Addition a section</ComboBoxItem>
+            <ComboBoxItem>Editing the section</ComboBoxItem>
+            <ComboBoxItem>Deleting the section</ComboBoxItem>
+        </ComboBox>
+        <TextBlock x:Name="textBlockSection" Text="Section:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="78" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,76,0,0"/>
+        <Frame x:Name="frameSection" Grid.Row="1" Grid.Column="2" Background="White" NavigationUIVisibility="Hidden" Margin="10,108,5,478"/>
+        <TextBlock x:Name="textBlockSectionName" Text="Section name:" Grid.Row="1" Grid.Column="2" FontSize="16" Height="29" Width="104" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,137,0,0"/>
+        <TextBox x:Name="textBoxSectionName" Grid.Row="1" Grid.Column="2" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,169,0,0"/>
+
+        <Button x:Name="buttonPerformOperationOnSection" Grid.Row="1" Grid.Column="2" Height="60" Width="340" FontSize="16" Background="#FF000B0D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Click="buttonPerformOperationOnSection_Click" Margin="0,232,0,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="CallToAction" Width="25" Height="25" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="Perform an operation on the section" FontSize="16" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Button>
+
+    </Grid>
+</Page>

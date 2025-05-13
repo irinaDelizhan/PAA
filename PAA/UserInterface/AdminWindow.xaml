@@ -1,0 +1,144 @@
+﻿<Window x:Class="PAA.UserInterface.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:PAA.UserInterface"
+        mc:Ignorable="d"
+        Title="PAA" Height="830" Width="1540"
+        WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize"
+        Foreground="White">
+    
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="220"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="buttonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    
+    <Grid Background="White">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Frame x:Name="frameMenu" Grid.Row="1" Grid.Column="1" Background="White" NavigationUIVisibility="Hidden"></Frame>
+
+        </Grid>
+        <Grid Height="60" VerticalAlignment="Top" Background="#FF000B0D" HorizontalAlignment="Left" Width="1540">
+            <TextBlock x:Name="textBlockRole" Text="Role" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+            <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                <TextBlock x:Name="textBlockFullName" Text="Name Surname" VerticalAlignment="Center" FontSize="16"/>
+                <materialDesign:PopupBox Margin="10, 10, 25, 10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
+                    <StackPanel Width="150">
+                        <Button Name="buttonAccount" Content="Account" Click="buttonAccount_Click" />
+                        <Separator/>
+                        <Button x:Name="buttonLogOut" Content="LogOut" Click="buttonLogOut_Click"/>
+                    </StackPanel>
+                </materialDesign:PopupBox>
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF000B0D">
+            <StackPanel>
+                <Grid Height="60" Background="White">
+                    <Button x:Name="buttonCloseMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Visibility="Collapsed" Click="buttonCloseMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF000B0D" Kind="ArrowLeft" Width="25" Height="25"/>
+                    </Button>
+                    <Button x:Name="buttonOpenMenu" Width="60" Height="60" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Top" HorizontalAlignment="Right" Click="buttonOpenMenu_Click">
+                        <materialDesign:PackIcon Foreground="#FF000B0D" Kind="Menu" Width="25" Height="25"/>
+                    </Button>
+                </Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="White" Background="#FF000B0D" BorderThickness="0">
+                    <ListViewItem x:Name="lstVI_Users" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Users">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="User" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Users" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Sections" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Sections">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewGrid" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Sections" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Positions" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Positions">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Briefcase" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Positions" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Journal" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Journal">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Journal" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Hiring and firing journal" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_ProjectsForEmployee" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_ProjectsForEmployee">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Folder" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="The projects" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_OpenProjects" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_OpenProjects">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FolderOpen" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Open projects" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_ClosedProjects" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_ClosedProjects">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FolderCheck" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Closed projects" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_States" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_States">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="StateMachine" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Project states" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Participations" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Participations">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PeopleSwitch" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Participation in projects" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Transactions" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Transactions">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="History" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Transactions" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="lstVI_Reports" Height="60" MouseLeftButtonUp="ListViewItem_MouseLeftButtonUp_Reports">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileDocument" Width="25" Height="25" Margin="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reports" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,123 @@
+﻿<Page x:Class="PAA.Pages.AccountPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:PAA.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1480"
+      Title="AccountPage">
+
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="30"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Change of data" Grid.Row="1" Grid.Column="1" FontSize="20" FontWeight="DemiBold" Height="28" Width="141" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Account information" Grid.Row="1" Grid.Column="2" FontSize="20" FontWeight="DemiBold" Height="28" Width="190" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBlock Text="Analytics" Grid.Row="1" Grid.Column="3" FontSize="20" FontWeight="DemiBold" Height="28" Width="84" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBlock x:Name="textBlockCurrentPassword" Text="Current password:" Grid.Row="2" Grid.Column="1" FontSize="16" Height="29" Width="136" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="49,10,0,0"/>
+        <PasswordBox x:Name="textBoxCurrentPassword" Grid.Row="2" Grid.Column="1" FontSize="16" Width="385" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10,39,0,0"/>
+        <TextBlock x:Name="textBlockNewPassword" Text="New password:" Grid.Row="2" Grid.Column="1" FontSize="16" Height="28" Width="136" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="49,74,0,0"/>
+        <PasswordBox x:Name="textBoxNewPassword" Grid.Row="2" Grid.Column="1" FontSize="16" Width="385" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,102,0,0"/>
+        <Button x:Name="buttonChangePassword" Grid.Row="2" Grid.Column="1" Height="60" Width="340" FontSize="16" Background="#FF000B0D" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,165,0,0" Click="buttonChangePassword_Click">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <materialDesign:PackIcon Kind="CallToAction" Width="25" Height="25" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                <TextBlock Text="Change password" FontSize="16" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+        </Button>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
+            <materialDesign:PackIcon Kind="Account" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockFullName" Text="Full name:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,49,0,0">
+            <materialDesign:PackIcon Kind="AccountCircle" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockLogin" Text="Login:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,88,0,0">
+            <materialDesign:PackIcon Kind="Phone" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockPhone" Text="Phone:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,127,0,0">
+            <materialDesign:PackIcon Kind="Home" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockAddress" Text="Address:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,166,0,0">
+            <materialDesign:PackIcon Kind="AccountTie" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockRole" Text="Role:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,205,0,0">
+            <materialDesign:PackIcon Kind="ViewGrid" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockSection" Text="Section:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,244,0,0">
+            <materialDesign:PackIcon Kind="Briefcase" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockPosition" Text="Position:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,283,0,0">
+            <materialDesign:PackIcon Kind="Calendar" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center"/>
+            <TextBlock x:Name="textBlockStartDate" Text="Date of registration:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
+            <materialDesign:PackIcon Kind="FolderOpen" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockOpenProjects" Text="Number of open projects:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,49,0,0">
+            <materialDesign:PackIcon Kind="FolderCheck" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockClosedProjects" Text="Number of closed projects:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,88,0,0">
+            <materialDesign:PackIcon Kind="FolderOpenOutline" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalOpenProjects" Text="Total number of open projects:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,127,0,0">
+            <materialDesign:PackIcon Kind="FolderRemove" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalClosedProjects" Text="Total number of closed projects:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,166,0,0">
+            <materialDesign:PackIcon Kind="StateMachine" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalStates" Text="Total number of project states entered:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,205,0,0">
+            <materialDesign:PackIcon Kind="Users" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalUsers" Text="Total number of users:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,244,0,0">
+            <materialDesign:PackIcon Kind="ViewGrid" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalSections" Text="Total number of sections:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,283,0,0">
+            <materialDesign:PackIcon Kind="Briefcase" Width="25" Height="25" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+            <TextBlock x:Name="textBlockTotalPositions" Text="Total number of positions:" FontSize="16" Height="29" VerticalAlignment="Center" Margin="5,0,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
